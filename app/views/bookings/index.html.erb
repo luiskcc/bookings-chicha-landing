@@ -1,6 +1,7 @@
+<%# app/views/tattoo_requests/new.html.erb %>
 
 <div class="flex flex-col">
-  <%= image_tag("header.png")%>
+  <%= image_tag("header.png") %>
   <div class="container mx-auto px-4 py-8">
     <h1 class="text-4xl font-bold mb-6 font-american-typewriter">Formulario de Solicitud de Tattoo</h1>
     
@@ -36,7 +37,7 @@
 
       <div>
         <%= form.label :size, "Elige el tamaño", class: "block font-bold mb-2 font-american-typewriter" %>
-        <%= form.select :size, ['Pequeño', 'Mediano', 'Grande'], {}, class: "form-select w-full font-helvetica" %>
+        <%= form.select :size, ['Pequeño', 'Mediano', 'Grande'], {}, class: "form-select w-full font-helvetica", id: "tattoo-size" %>
       </div>
 
       <div>
@@ -62,47 +63,63 @@
         <%= form.check_box :legal_consent, class: "form-checkbox" %>
         <%= form.label :legal_consent, "He rellenado el consentimiento legal", class: "ml-2 font-helvetica" %>
       </div>
+
+      <div id="stripe-button-container" class="hidden">
+        <div id="small-button" class="hidden">
+          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1QA5xpRpoo80Cc4Wkmk43Uut"
+            publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
+          ></stripe-buy-button>
+        </div>
+
+        <div id="medium-button" class="hidden">
+          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1QA68qRpoo80Cc4W4UctDrDh"
+            publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
+          ></stripe-buy-button>
+        </div>
+
+        <div id="large-button" class="hidden">
+          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1QA6HhRpoo80Cc4WhHCPtbl9"
+            publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
+          ></stripe-buy-button>
+        </div>
+      </div>
     <% end %>
   </div>
 
-  <small>
-    <script async
-      src="https://js.stripe.com/v3/buy-button.js">
-    </script>
-
-    <stripe-buy-button
-      buy-button-id="buy_btn_1QA5xpRpoo80Cc4Wkmk43Uut"
-      publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
-    >
-    </stripe-buy-button>
-  </small>
-  
-
-  <medium>
-  <script async
-    src="https://js.stripe.com/v3/buy-button.js">
-  </script>
-
-  <stripe-buy-button
-    buy-button-id="buy_btn_1QA68qRpoo80Cc4W4UctDrDh"
-    publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
-  >
-  </stripe-buy-button>
-  </medium>
-
-  <large>
-  <script async
-    src="https://js.stripe.com/v3/buy-button.js">
-  </script>
-
-  <stripe-buy-button
-    buy-button-id="buy_btn_1QA6HhRpoo80Cc4WhHCPtbl9"
-    publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
-  >
-  </stripe-buy-button>
-
-  </large>
-
-
-  <%= image_tag("footer.png")%>
+  <%= image_tag("footer.png") %>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sizeSelect = document.getElementById('tattoo-size');
+  const stripeButtonContainer = document.getElementById('stripe-button-container');
+  const smallButton = document.getElementById('small-button');
+  const mediumButton = document.getElementById('medium-button');
+  const largeButton = document.getElementById('large-button');
+
+  sizeSelect.addEventListener('change', function() {
+    stripeButtonContainer.classList.remove('hidden');
+    smallButton.classList.add('hidden');
+    mediumButton.classList.add('hidden');
+    largeButton.classList.add('hidden');
+
+    switch(this.value) {
+      case 'Pequeño':
+        smallButton.classList.remove('hidden');
+        break;
+      case 'Mediano':
+        mediumButton.classList.remove('hidden');
+        break;
+      case 'Grande':
+        largeButton.classList.remove('hidden');
+        break;
+    }
+  });
+});
+</script>
