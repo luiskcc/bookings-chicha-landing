@@ -36,8 +36,13 @@
       </div>
 
       <div>
+        <%= form.text :body_part, "Descripción y Selección específica de la parte del cuerpo", class: "block font-bold mb-2 font-american-typewriter" %>
+        <%= form.select :body_part, ['Brazo', 'Pierna', 'Espalda', 'Mano', 'Otra'], {}, class: "form-select w-full font-helvetica" %>
+      </div>
+
+      <div>
         <%= form.label :size, "Elige el tamaño", class: "block font-bold mb-2 font-american-typewriter" %>
-        <%= form.select :size, ['Pequeño', 'Mediano', 'Grande'], {}, class: "form-select w-full font-helvetica", id: "tattoo-size" %>
+        <%= form.select :size, ['Pequeño(0-5cm)', 'Mediano(6-15cm)', 'Grande(>16cm)'], {}, class: "form-select w-full font-helvetica", id: "tattoo-size" %>
       </div>
 
       <div>
