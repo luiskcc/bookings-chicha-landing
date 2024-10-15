@@ -62,9 +62,47 @@
         <%= form.check_box :legal_consent, class: "form-checkbox" %>
         <%= form.label :legal_consent, "He rellenado el consentimiento legal", class: "ml-2 font-helvetica" %>
       </div>
-
-      <%= form.submit "Enviar Solicitud", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded font-helvetica" %>
     <% end %>
   </div>
+
+  <small>
+    <script async
+      src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+
+    <stripe-buy-button
+      buy-button-id="buy_btn_1QA5xpRpoo80Cc4Wkmk43Uut"
+      publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
+    >
+    </stripe-buy-button>
+  </small>
+  
+
+  <medium>
+  <script async
+    src="https://js.stripe.com/v3/buy-button.js">
+  </script>
+
+  <stripe-buy-button
+    buy-button-id="buy_btn_1QA68qRpoo80Cc4W4UctDrDh"
+    publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
+  >
+  </stripe-buy-button>
+  </medium>
+
+  <large>
+  <script async
+    src="https://js.stripe.com/v3/buy-button.js">
+  </script>
+
+  <stripe-buy-button
+    buy-button-id="buy_btn_1QA6HhRpoo80Cc4WhHCPtbl9"
+    publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
+  >
+  </stripe-buy-button>
+
+  </large>
+
+
   <%= image_tag("footer.png")%>
 </div>
