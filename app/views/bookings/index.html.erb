@@ -1,4 +1,70 @@
-<div>
-  <h1 class="font-bold text-4xl">Bookings#index</h1>
-  <p>Find me in app/views/bookings/index.html.erb</p>
+
+<div class="flex flex-col">
+  <%= image_tag("header.png")%>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-6 font-american-typewriter">Formulario de Solicitud de Tattoo</h1>
+    
+    <p class="mb-6 font-helvetica">Complete el formulario a continuación para programar una cita para un tatuaje. El gerente de reservas lo llamará directamente una vez que recibamos su formulario. Se requiere un depósito no reembolsable para reservar una fecha para el tatuaje.</p>
+
+    <%= form_with(model: @tattoo_request, local: true, class: "space-y-6") do |form| %>
+      <div>
+        <%= form.check_box :is_adult, class: "form-checkbox" %>
+        <%= form.label :is_adult, "Soy mayor de edad", class: "ml-2 font-helvetica" %>
+      </div>
+
+      <div>
+        <p class="font-bold mb-2 font-american-typewriter">Estilo de Tatuaje</p>
+        <div class="flex space-x-4">
+          <%= form.radio_button :style, 'Traditional', class: "form-radio" %>
+          <%= form.label :style_traditional, "Traditional tattoo", class: "ml-2 font-helvetica" %>
+          
+          <%= form.radio_button :style, 'Classic', class: "form-radio" %>
+          <%= form.label :style_classic, "Classic tattoo", class: "ml-2 font-helvetica" %>
+          
+          <%= form.radio_button :style, 'Black_Traditional', class: "form-radio" %>
+          <%= form.label :style_black_traditional, "Black Traditional", class: "ml-2 font-helvetica" %>
+          
+          <%= form.radio_button :style, 'Fineline', class: "form-radio" %>
+          <%= form.label :style_fineline, "Fineline", class: "ml-2 font-helvetica" %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.label :body_part, "Elige la parte del cuerpo", class: "block font-bold mb-2 font-american-typewriter" %>
+        <%= form.select :body_part, ['Brazo', 'Pierna', 'Espalda', 'Mano', 'Otra'], {}, class: "form-select w-full font-helvetica" %>
+      </div>
+
+      <div>
+        <%= form.label :size, "Elige el tamaño", class: "block font-bold mb-2 font-american-typewriter" %>
+        <%= form.select :size, ['Pequeño', 'Mediano', 'Grande'], {}, class: "form-select w-full font-helvetica" %>
+      </div>
+
+      <div>
+        <p class="font-bold mb-2 font-american-typewriter">Elige el artista para tu próximo TATTOO</p>
+        <div class="flex space-x-4">
+          <%= form.radio_button :artist, 'Diego', class: "form-radio" %>
+          <%= form.label :artist_diego, "Diego", class: "ml-2 font-helvetica" %>
+          
+          <%= form.radio_button :artist, 'El_Pegatas', class: "form-radio" %>
+          <%= form.label :artist_el_pegatas, "El Pegatas", class: "ml-2 font-helvetica" %>
+          
+          <%= form.radio_button :artist, 'Choka', class: "form-radio" %>
+          <%= form.label :artist_choka, "Choka", class: "ml-2 font-helvetica" %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.label :tattoo_idea, "UPLOAD YOUR TATTOO IDEAS", class: "block font-bold mb-2 font-american-typewriter" %>
+        <%= form.file_field :tattoo_idea, class: "form-input w-full font-helvetica" %>
+      </div>
+
+      <div>
+        <%= form.check_box :legal_consent, class: "form-checkbox" %>
+        <%= form.label :legal_consent, "He rellenado el consentimiento legal", class: "ml-2 font-helvetica" %>
+      </div>
+
+      <%= form.submit "Enviar Solicitud", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded font-helvetica" %>
+    <% end %>
+  </div>
+  <%= image_tag("footer.png")%>
 </div>
