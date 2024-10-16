@@ -12,18 +12,18 @@
   </head>
 
   <body>
-      <header class="flex justify-between items-center border-b border-gray-200">
-        <div class="flex space-x-2">
-          <button class="bg-black text-gray-200 px-4 py-2 rounded-md text-sm"><a href="https://booking-chicha-92b0b6aeb946.herokuapp.com/">Book Your Tattoo</a></button>
-          <button class="bg-black text-gray-200 px-4 py-2 rounded-md text-sm"><a href="https://10sotng76zp.typeform.com/to/Y1zzSArr">Free Consultation</a></button>
-        </div>
-        <%= image_tag "chicha-logo.jpeg", class: "w-20"%>
-        <div class="flex space-x-4 text-sm">
-          <a href="https://chicha-db-4a4855124415.herokuapp.com/consents/new" class="hover:underline">Consent Form</a>
-          <a href="https://chicharrotattoogallery.com/" class="hover:underline">CLOTHING</a>
-        </div>
-      </header>
-    <main class="container mx-auto mt-0 flex">
+    <header class="flex justify-between items-center border-b border-gray-200">
+      <div class="flex space-x-2">
+        <button class="bg-black text-gray-200 px-4 py-2 rounded-md text-sm" onclick="window.location.href='https://booking-chicha-92b0b6aeb946.herokuapp.com'">Book Your Tattoo</button>
+        <button class="bg-black text-gray-200 px-4 py-2 rounded-md text-sm" onclick="window.location.href='https://10sotng76zp.typeform.com/to/Y1zzSArr'">Free Consultation</button>
+      </div>
+      <img src="chicha-logo.jpeg" alt="Chicha Logo" class="w-20">
+      <div class="flex space-x-4 text-sm">
+        <a href="https://chicha-db-4a4855124415.herokuapp.com/consents/new" class="hover:underline">Consent Form</a>
+        <a href="https://chicharrotattoogallery.com/" class="hover:underline">CLOTHING</a>
+      </div>
+    </header>
+      <main class="container mx-auto mt-0 flex">
       <%= yield %>
     </main>
     <%= image_tag "footer.png"%>
