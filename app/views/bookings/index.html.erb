@@ -4,109 +4,100 @@
   <%= image_tag("header.png") %>
   <div class="container mx-auto px-4 py-8">
     <%= image_tag("formulario-textt.png") %>
+  </div>
+  
+  <p class="mb-6 font-helvetica">Complete the form below to schedule a tattoo appointment. The booking manager will call you directly once we receive your form. A non-refundable deposit is required to book a date for the tattoo.</p>
+
+  <%= form_with(model: @tattoo_request, local: true, class: "space-y-6") do |form| %>
+    <div>
+      <%= form.check_box :is_adult, class: "form-checkbox" %>
+      <%= form.label :is_adult, "I am of legal age", class: "ml-2 font-helvetica" %>
     </div>
-    
-    <p class="mb-6 font-helvetica">Complete el formulario a continuación para programar una cita para un tatuaje. El gerente de reservas lo llamará directamente una vez que recibamos su formulario. Se requiere un depósito no reembolsable para reservar una fecha para el tatuaje.</p>
 
-    <%= form_with(model: @tattoo_request, local: true, class: "space-y-6") do |form| %>
-      <div>
-        <%= form.check_box :is_adult, class: "form-checkbox" %>
-        <%= form.label :is_adult, "Soy mayor de edad", class: "ml-2 font-helvetica" %>
+    <div>
+      <p class="font-bold mb-2 font-american-typewriter">Tattoo Style</p>
+      <div class="flex space-x-4">
+        <%= form.radio_button :style, 'Traditional', class: "form-radio" %>
+        <%= form.label :style_traditional, "Traditional tattoo", class: "ml-2 font-helvetica" %>
+        
+        <%= form.radio_button :style, 'Classic', class: "form-radio" %>
+        <%= form.label :style_classic, "Classic tattoo", class: "ml-2 font-helvetica" %>
+        
+        <%= form.radio_button :style, 'Black_Traditional', class: "form-radio" %>
+        <%= form.label :style_black_traditional, "Black Traditional", class: "ml-2 font-helvetica" %>
+        
+        <%= form.radio_button :style, 'Fineline', class: "form-radio" %>
+        <%= form.label :style_fineline, "Fineline", class: "ml-2 font-helvetica" %>
       </div>
+    </div>
 
-      <div>
-        <p class="font-bold mb-2 font-american-typewriter">Estilo de Tatuaje</p>
-        <div class="flex space-x-4">
-          <%= form.radio_button :style, 'Traditional', class: "form-radio" %>
-          <%= form.label :style_traditional, "Traditional tattoo", class: "ml-2 font-helvetica" %>
-          
-          <%= form.radio_button :style, 'Classic', class: "form-radio" %>
-          <%= form.label :style_classic, "Classic tattoo", class: "ml-2 font-helvetica" %>
-          
-          <%= form.radio_button :style, 'Black_Traditional', class: "form-radio" %>
-          <%= form.label :style_black_traditional, "Black Traditional", class: "ml-2 font-helvetica" %>
-          
-          <%= form.radio_button :style, 'Fineline', class: "form-radio" %>
-          <%= form.label :style_fineline, "Fineline", class: "ml-2 font-helvetica" %>
-        </div>
+    <div>
+      <%= form.label :body_part, "Choose the body part", class: "block font-bold mb-2 font-american-typewriter" %>
+      <%= form.select :body_part, ['Arm', 'Leg', 'Back', 'Hand', 'Other'], {}, class: "form-select w-full font-helvetica" %>
+    </div>
+
+    <div>
+      <%= form.label :body_part, "Description and Specific Selection of the Body Part", class: "block font-bold mb-2 font-american-typewriter" %>
+      <%= form.text_area :body_part, class: "form-input w-full font-helvetica" %>
+    </div>
+
+    <div>
+      <p class="font-bold mb-2 font-american-typewriter">Choose the artist for your next TATTOO</p>
+      <div class="flex space-x-4">
+        <%= form.radio_button :artist, 'Diego', class: "form-radio" %>
+        <%= form.label :artist_diego, "Diego", class: "ml-2 font-helvetica" %>
+        
+        <%= form.radio_button :artist, 'El_Pegatas', class: "form-radio" %>
+        <%= form.label :artist_el_pegatas, "El Pegatas", class: "ml-2 font-helvetica" %>
+        
+        <%= form.radio_button :artist, 'Choka', class: "form-radio" %>
+        <%= form.label :artist_choka, "Choka", class: "ml-2 font-helvetica" %>
+        
+        <%= form.radio_button :artist, 'Guest', class: "form-radio" %>
+        <%= form.label :artist_guest, "Guest", class: "ml-2 font-helvetica" %>
       </div>
+    </div>
 
-      <div>
-        <%= form.label :body_part, "Elige la parte del cuerpo", class: "block font-bold mb-2 font-american-typewriter" %>
-        <%= form.select :body_part, ['Brazo', 'Pierna', 'Espalda', 'Mano', 'Otra'], {}, class: "form-select w-full font-helvetica" %>
-      </div>
+    <div>
+      <%= form.label :tattoo_idea, "UPLOAD YOUR TATTOO IDEAS", class: "block font-bold mb-2 font-american-typewriter" %>
+      <%= form.file_field :tattoo_idea, class: "form-input w-full font-helvetica" %>
+    </div>
 
-      <div>
-        <%= form.label :body_part, "Descripción y Selección específica de la parte del cuerpo", class: "block font-bold mb-2 font-american-typewriter" %>
-        <%= form.text_area :body_part, class: "form-input w-full font-helvetica" %>
-      </div>
+    <div>
+      <%= form.check_box :legal_consent, class: "form-checkbox" %>
+      <%= form.label :legal_consent, "I have filled out the legal consent. " %>
+      <%= link_to "Legal Consent", "https://chicha-db-4a4855124415.herokuapp.com/consents/new", class: "ml-2 font-helvetica text-blue-500 underline" %>
+    </div>
+  <% end %>
 
-      <div>
-        <p class="font-bold mb-2 font-american-typewriter">Elige el artista para tu próximo TATTOO</p>
-        <div class="flex space-x-4">
-          <%= form.radio_button :artist, 'Diego', class: "form-radio" %>
-          <%= form.label :artist_diego, "Diego", class: "ml-2 font-helvetica" %>
-          
-          <%= form.radio_button :artist, 'El_Pegatas', class: "form-radio" %>
-          <%= form.label :artist_el_pegatas, "El Pegatas", class: "ml-2 font-helvetica" %>
-          
-          <%= form.radio_button :artist, 'Choka', class: "form-radio" %>
-          <%= form.label :artist_choka, "Choka", class: "ml-2 font-helvetica" %>
+  <div id="stripe-button-container" class="hidden">
+    <div id="small-button" class="hidden">
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1QA5xpRpoo80Cc4Wkmk43Uut"
+        publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T">
+      </stripe-buy-button>
+    </div>
 
-          <%= form.radio_button :artist, 'Invitado', class: "form-radio" %>
-          <%= form.label :artist_choka, "Invitado", class: "ml-2 font-helvetica" %>
-        </div>
-      </div>
+    <div id="medium-button" class="hidden">
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1QA6V7Rpoo80Cc4W5Wbmnbk2"
+        publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T">
+      </stripe-buy-button>
+    </div>
 
-      <div>
-        <%= form.label :tattoo_idea, "UPLOAD YOUR TATTOO IDEAS", class: "block font-bold mb-2 font-american-typewriter" %>
-        <%= form.file_field :tattoo_idea, class: "form-input w-full font-helvetica" %>
-      </div>
-
-      <div>
-        <%= form.check_box :legal_consent, class: "form-checkbox" %>
-        <%= form.label :legal_consent, "He rellenado el consentimiento legal. " %>
-        <%= link_to "Consenso legal", "https://chicha-db-4a4855124415.herokuapp.com/consents/new", class: "ml-2 font-helvetica" %>
-      </div>
-    <% end %>
-
-      <div id="stripe-button-container" class="hidden">
-        <div id="small-button" class="hidden">
-          <script async
-            src="https://js.stripe.com/v3/buy-button.js">
-          </script>
-
-          <stripe-buy-button
-            buy-button-id="buy_btn_1QA5xpRpoo80Cc4Wkmk43Uut"
-            publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
-          >
-          </stripe-buy-button>
-        </div>
-
-        <div id="medium-button" class="hidden">
-          <script async
-            src="https://js.stripe.com/v3/buy-button.js">
-          </script>
-
-          <stripe-buy-button
-            buy-button-id="buy_btn_1QA6V7Rpoo80Cc4W5Wbmnbk2"
-            publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
-          >
-          </stripe-buy-button>
-        </div>
-
-        <div id="large-button" class="hidden">
-          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-          <stripe-buy-button
-            buy-button-id="buy_btn_1QA6HhRpoo80Cc4WhHCPtbl9"
-            publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T"
-          ></stripe-buy-button>
-        </div>
-      </div>
+    <div id="large-button" class="hidden">
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1QA6HhRpoo80Cc4WhHCPtbl9"
+        publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T">
+      </stripe-buy-button>
+    </div>
+  </div>
 
   <%= image_tag("footer.png") %>
 </div>
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -123,13 +114,13 @@ document.addEventListener('DOMContentLoaded', function() {
     largeButton.classList.add('hidden');
 
     switch(this.value) {
-      case 'Pequeño':
+      case 'Small':
         smallButton.classList.remove('hidden');
         break;
-      case 'Mediano':
+      case 'Medium':
         mediumButton.classList.remove('hidden');
         break;
-      case 'Grande':
+      case 'Large':
         largeButton.classList.remove('hidden');
         break;
     }
