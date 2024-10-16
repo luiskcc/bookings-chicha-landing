@@ -55,6 +55,11 @@
     </div>
 
     <div>
+      <%= form.label :body_part, "Choose the size", class: "block font-bold mb-2 font-american-typewriter" %>
+      <%= form.select :body_part, ['Small(0-6cm)', 'Medium(7-15cm)', 'Large(>15cm)'], {}, class: "form-select w-full font-helvetica", id: "tattoo-size" %>
+    </div>
+
+    <div>
       <%= form.label :body_part, "Description and Specific Selection of the Body Part", class: "block font-bold mb-2 font-american-typewriter" %>
       <%= form.text_area :body_part, class: "form-input w-full font-helvetica" %>
     </div>
@@ -121,26 +126,35 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const sizeSelect = document.getElementById('tattoo-size');
+  const sizeSelect = document.getElementById('tattoo-size'); // Ensure this ID matches the select element
   const stripeButtonContainer = document.getElementById('stripe-button-container');
   const smallButton = document.getElementById('small-button');
   const mediumButton = document.getElementById('medium-button');
   const largeButton = document.getElementById('large-button');
 
+  // Hide all buttons initially
+  stripeButtonContainer.classList.add('hidden');
+  smallButton.classList.add('hidden');
+  mediumButton.classList.add('hidden');
+  largeButton.classList.add('hidden');
+
   sizeSelect.addEventListener('change', function() {
-    stripeButtonContainer.classList.remove('hidden');
+    stripeButtonContainer.classList.remove('hidden'); // Show the button container
+
+    // Hide all buttons initially
     smallButton.classList.add('hidden');
     mediumButton.classList.add('hidden');
     largeButton.classList.add('hidden');
 
+    // Show the appropriate button based on the selected size
     switch(this.value) {
-      case 'Small':
+      case 'Small(0-6cm)':
         smallButton.classList.remove('hidden');
         break;
-      case 'Medium':
+      case 'Medium(7-15cm)':
         mediumButton.classList.remove('hidden');
         break;
-      case 'Large':
+      case 'Large(>15cm)':
         largeButton.classList.remove('hidden');
         break;
     }
