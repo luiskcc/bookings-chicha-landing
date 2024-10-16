@@ -1,9 +1,26 @@
 <%# app/views/tattoo_requests/new.html.erb %>
 
+
 <div class="flex flex-col">
-  <%= image_tag("header.png") %>
-  <div class="container mx-auto px-4 py-8">
-    <%= image_tag("formulario-textt.png") %>
+  <style>
+        @font-face {
+            font-family: 'American Typewriter';
+            src: url('assets/fonts/AmericanTypewriter-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Helvetica', sans-serif; /* Use Helvetica for body text */
+        }
+
+        h1 {
+            font-family: 'American Typewriter', serif; /* Use American Typewriter for h1 */
+        }
+    </style>
+
+  <div class="container mx-auto px-4 py-8 font-bold text-xl">
+    <h1 class="text-3xl">Tattoo Form Request<h1>
   </div>
   
   <p class="mb-6 font-helvetica">Complete the form below to schedule a tattoo appointment. The booking manager will call you directly once we receive your form. A non-refundable deposit is required to book a date for the tattoo.</p>
@@ -95,9 +112,11 @@
       </stripe-buy-button>
     </div>
   </div>
-
-  <%= image_tag("footer.png") %>
 </div>
+
+
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -127,3 +146,4 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+

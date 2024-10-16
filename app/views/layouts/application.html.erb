@@ -12,8 +12,20 @@
   </head>
 
   <body>
+      <header class="flex justify-between items-center border-b border-gray-200">
+        <div class="flex space-x-2">
+          <button class="bg-black text-gray-200 px-4 py-2 rounded-md text-sm">Book Your Tattoo</button>
+          <button class="bg-black text-gray-200 px-4 py-2 rounded-md text-sm">FREE CONSULTATION</button>
+        </div>
+        <%= image_tag "chicha-logo.jpeg", class: "w-20"%>
+        <div class="flex space-x-4 text-sm">
+          <a href="#" class="hover:underline">Consent Form</a>
+          <a href="#" class="hover:underline">CLOTHING</a>
+        </div>
+      </header>
     <main class="container mx-auto mt-0 flex">
       <%= yield %>
     </main>
+    <%= image_tag "footer.png"%>
   </body>
 </html>
