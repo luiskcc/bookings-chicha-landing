@@ -10,6 +10,7 @@ module.exports = {
   theme: {
     extend: {
           width: {
+            '5': '10px',
             '50': '50px',
             '70': '70px',
             '200': '180px',
