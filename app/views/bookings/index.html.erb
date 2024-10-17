@@ -24,16 +24,16 @@
       <hr class="border-t-4 border-black my-4">
   </div>
   
-  <p class="mb-6 font-helvetica">Complete the form below to schedule a tattoo appointment. The booking manager will call you directly once we receive your form. A non-refundable deposit is required to book a date for the tattoo.</p>
+  <p class="mb-6 font-helvetica">Complete the form below to schedule a tattoo appointment. The booking manager will get in touch with you directly once we receive your form. A non-refundable deposit is required to book a date for the tattoo.</p>
 
-  <%= form_with(model: @tattoo_request, local: true, class: "space-y-6") do |form| %>
+  <%= form_with(model: @tattoo_request, local: true, class: "space-y-6 pb-10") do |form| %>
     <div>
       <%= form.check_box :is_adult, class: "form-checkbox" %>
       <%= form.label :is_adult, "I am of legal age", class: "ml-2 font-helvetica" %>
     </div>
 
     <div>
-      <p class="font-bold mb-2 font-american-typewriter">Tattoo Style</p>
+      <p class="font-bold mb-2 font-american-typewriter">Tattoo Style*</p>
       <div class="flex space-x-4">
         <%= form.radio_button :style, 'Traditional', class: "form-radio" %>
         <%= form.label :style_traditional, "Traditional tattoo", class: "ml-2 font-helvetica" %>
@@ -50,17 +50,17 @@
     </div>
 
     <div>
-      <%= form.label :body_part, "Choose the body part", class: "block font-bold mb-2 font-american-typewriter" %>
+      <%= form.label :body_part, "Choose the body part", class: "block font-bold mb-2 font-american-typewriter", required: true %>
       <%= form.select :body_part, ['Arm', 'Leg', 'Back', 'Hand', 'Other'], {}, class: "form-select w-full font-helvetica" %>
     </div>
 
     <div>
-      <%= form.label :body_part, "Choose the size", class: "block font-bold mb-2 font-american-typewriter" %>
-      <%= form.select :body_part, ['Small(0-6cm)', 'Medium(7-15cm)', 'Large(>15cm)'], {}, class: "form-select w-full font-helvetica", id: "tattoo-size" %>
+      <%= form.label :body_part, "Choose the size", class: "block font-bold mb-2 font-american-typewriter", required: true %>
+      <%= form.select :body_part, ['', 'Small(0-6cm)', 'Medium(7-15cm)', 'Large(>15cm)'], {}, class: "form-select w-full font-helvetica", id: "tattoo-size" %>
     </div>
 
     <div>
-      <%= form.label :body_part, "Description and Specific Selection of the Body Part", class: "block font-bold mb-2 font-american-typewriter" %>
+      <%= form.label :body_part, "Description and Specific Selection of the Body Part", class: "block font-bold mb-2 font-american-typewriter", required: true %>
       <%= form.text_area :body_part, class: "form-input w-full font-helvetica" %>
     </div>
 
@@ -82,15 +82,16 @@
     </div>
 
     <div>
-      <%= form.label :tattoo_idea, "UPLOAD YOUR TATTOO IDEAS", class: "block font-bold mb-2 font-american-typewriter" %>
+      <%= form.label :tattoo_idea, "UPLOAD YOUR TATTOO IDEAS", class: "block font-bold mb-2 font-american-typewriter", required: true %>
       <%= form.file_field :tattoo_idea, class: "form-input w-full font-helvetica" %>
     </div>
 
     <div>
-      <%= form.check_box :legal_consent, class: "form-checkbox" %>
-      <%= form.label :legal_consent, "I have filled out the legal consent. " %>
+      <%= form.check_box :legal_consent, class: "form-checkbox", required: true %>
+      <%= form.label :legal_consent, "I have filled out the" %>
       <%= link_to "Legal Consent", "https://chicha-db-4a4855124415.herokuapp.com/consents/new", class: "ml-2 font-helvetica text-blue-500 underline" %>
     </div>
+      <%= form.submit style: "display: none" %>
   <% end %>
 
   <div id="stripe-button-container" class="hidden">
