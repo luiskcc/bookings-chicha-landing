@@ -12,12 +12,28 @@
   </head>
 
   <body>
-    <header class="flex flex-col justify-between items-center pt-10 py-2">
+    <header class="flex flex-col justify-between items-center pt-10">
       <%= link_to image_tag("chicha-logo.jpg", class: "w-200"), "https://chicharrotattoo-2eyu3tsqwm.live-website.com/" %> 
     </header>
-      <main class="container mx-auto pt-10 pb-40 flex">
+      <main class="container flex pt-10 pb-40 py-10">
       <%= yield %>
     </main>
-    <%= image_tag "footer.png"%>
+    <%= image_tag "footer.png", class: "footer-large" %>
+    <%= image_tag "footer-small-screen.png", class: "footer-small" %>
+
+    <style>
+      .footer-small {
+        display: none; /* Hide small footer by default */
+      }
+
+      @media (max-width: 768px) { /* Adjust the breakpoint as needed */
+        .footer-large {
+          display: none; /* Hide large footer on small screens */
+        }
+        .footer-small {
+          display: block; /* Show small footer on small screens */
+        }
+      }
+    </style>
   </body>
 </html>
