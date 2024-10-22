@@ -26,6 +26,12 @@
 
   <%= form_with(model: @tattoo_request, local: true, class: "space-y-6 pb-10") do |form| %>
     <div>
+      <%= form.label :body_part, 'Name' %>
+      <%= form.text_area :body_part %>
+      <%= form.label :body_part, 'Email' %>
+      <%= form.text_area :body_part %>
+    </div>
+    <div>
       <%= form.check_box :is_adult, class: "form-checkbox" %>
       <%= form.label :is_adult, "I am of legal age", class: "ml-2 font-helvetica" %>
     </div>
@@ -94,27 +100,35 @@
 
   <div id="stripe-button-container" class="hidden">
     <div id="small-button" class="hidden">
-      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-      <stripe-buy-button
-        buy-button-id="buy_btn_1QA5xpRpoo80Cc4Wkmk43Uut"
-        publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T">
-      </stripe-buy-button>
+    <script async
+      src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+    <stripe-buy-button
+      buy-button-id="buy_btn_1QCmLBRpoo80Cc4WlyPMMNxV"
+      publishable-key="pk_live_51Q9l8lRpoo80Cc4WVKtdLMMGdMtPfsAKzODhTY965On5bOYCfXig0DJzElHFdgY24R8SXdqyp0IL3WjlE2chUZWs00Mu118Mfb">
+    </stripe-buy-button>
     </div>
 
     <div id="medium-button" class="hidden">
-      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-      <stripe-buy-button
-        buy-button-id="buy_btn_1QA6V7Rpoo80Cc4W5Wbmnbk2"
-        publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T">
-      </stripe-buy-button>
+    <script async
+      src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+    <stripe-buy-button
+      buy-button-id="buy_btn_1QCmKyRpoo80Cc4WyGiI4uaE"
+      publishable-key="pk_live_51Q9l8lRpoo80Cc4WVKtdLMMGdMtPfsAKzODhTY965On5bOYCfXig0DJzElHFdgY24R8SXdqyp0IL3WjlE2chUZWs00Mu118Mfb">
+    </stripe-buy-button>
     </div>
 
     <div id="large-button" class="hidden">
-      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-      <stripe-buy-button
-        buy-button-id="buy_btn_1QA6HhRpoo80Cc4WhHCPtbl9"
-        publishable-key="pk_test_51Q9l8lRpoo80Cc4WFkj8oA6IjnoIWgOsHk0WBTtklwWtVyfP8QqgbT0L9DMkgHceqmL332oxAP4LoSScPREzHj2q00FHybn12T">
-      </stripe-buy-button>
+    <script async
+      src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+
+    <stripe-buy-button
+      buy-button-id="buy_btn_1QCmL6Rpoo80Cc4Ww4wRiARU"
+      publishable-key="pk_live_51Q9l8lRpoo80Cc4WVKtdLMMGdMtPfsAKzODhTY965On5bOYCfXig0DJzElHFdgY24R8SXdqyp0IL3WjlE2chUZWs00Mu118Mfb"
+    >
+    </stripe-buy-button>
     </div>
   </div>
 </div>
