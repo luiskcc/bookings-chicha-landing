@@ -1,0 +1,19 @@
+<h1>New Tattoo Request</h1>
+
+<p>You have received a new tattoo request with the following details:</p>
+
+<ul>
+    <li><strong>Is Adult:</strong> <%= @tattoo_request[:is_adult] ? 'Yes' : 'No' %></li>
+    <li><strong>Tattoo Style:</strong> <%= @tattoo_request[:style] %></li>
+    <li><strong>Body Part:</strong> <%= @tattoo_request[:body_part] %></li>
+    <li><strong>Size:</strong> <%= @tattoo_request[:size] %></li>
+    <li><strong>Description:</strong> <%= @tattoo_request[:description] %></li>
+    <li><strong>Artist:</strong> <%= @tattoo_request[:artist] %></li>
+    <li><strong>Legal Consent:</strong> <%= @tattoo_request[:legal_consent] ? 'Yes' : 'No' %></li>
+</ul>
+
+<% if @tattoo_request[:tattoo_idea].present? %>
+    <p><strong>Tattoo Idea:</strong> <%= @tattoo_request[:tattoo_idea].filename if @tattoo_request[:tattoo_idea].respond_to?(:filename) %></p>
+<% end %>
+
+<p>Thank you for your request!</p>
